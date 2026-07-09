@@ -30,19 +30,14 @@ export class UIManager {
   }
 
   showScreen(id) {
-    this.overlay.style.display = "flex";
-
-    this.overlay.querySelectorAll('.screen').forEach((screen) => {
-      screen.classList.remove('active');
-    });
-
+    this.overlay.style.display = 'flex';
+    this.overlay.querySelectorAll('.screen').forEach((screen) => screen.classList.remove('active'));
     document.getElementById(id)?.classList.add('active');
   }
 
-  // NOVO
+
   hideScreen() {
     this.overlay.style.display = "none";
-
     this.overlay.querySelectorAll('.screen').forEach((screen) => {
       screen.classList.remove('active');
     });
@@ -80,30 +75,12 @@ export class UIManager {
       { key: 'comboDuration', label: 'Combo Duration', cost: 16, desc: 'Longer combos' },
       { key: 'maxHealth', label: 'Max Health', cost: 18, desc: '+2 health' }
     ];
-
     this.upgradeList.innerHTML = '';
-
     upgrades.forEach((upgrade) => {
       const row = document.createElement('div');
       row.className = 'upgrade-item';
-
       const current = this.game.save.getUpgrade(upgrade.key);
-
-      row.innerHTML = `
-        <div>
-          <strong>${upgrade.label}</strong><br>
-          <small>${upgrade.desc}</small><br>
-          <small>Lv ${current}</small>
-        </div>
-
-        <button
-          class="upgrade-btn"
-          data-key="${upgrade.key}"
-          data-cost="${upgrade.cost}">
-          Buy ${upgrade.cost}
-        </button>
-      `;
-
+      row.innerHTML = `<div><strong>${upgrade.label}</strong><br /><small>${upgrade.desc}</small><br /><small>Lv ${current}</small></div><button class="upgrade-btn" data-key="${upgrade.key}" data-cost="${upgrade.cost}">Buy ${upgrade.cost}</button>`;
       this.upgradeList.appendChild(row);
     });
   }
