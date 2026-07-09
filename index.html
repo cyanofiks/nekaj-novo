@@ -1,17 +1,60 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Croatian Traffic Rage</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bubble Healer 2 - Virus Attack</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <canvas id="gameCanvas"></canvas>
 
-<canvas id="gameCanvas"></canvas>
+  <div id="hud">
+    <div class="hud-group">
+      <div class="pill">Score <span id="scoreValue">0</span></div>
+      <div class="pill">Coins <span id="coinValue">0</span></div>
+      <div class="pill">Best <span id="bestValue">0</span></div>
+      <div class="pill">Combo <span id="comboValue">x1</span></div>
+    </div>
+    <div class="hud-group">
+      <button id="pauseBtn" class="icon-btn">⏸</button>
+      <button id="soundBtn" class="icon-btn">🔊</button>
+      <button id="upgradeBtn" class="icon-btn">⚙</button>
+    </div>
+  </div>
 
-<script src="game.js"></script>
+  <div id="overlay">
+    <section id="menuScreen" class="screen active">
+      <h1>Bubble Healer 2</h1>
+      <h2>Virus Attack</h2>
+      <p>Heal the body by bursting invasive viruses before they take over the screen.</p>
+      <button id="playBtn" class="primary-btn">Start Game</button>
+      <div class="stats-grid">
+        <div class="stat-card"><strong id="menuBest">0</strong><span>Best Score</span></div>
+        <div class="stat-card"><strong id="menuCoins">0</strong><span>Coins</span></div>
+      </div>
+    </section>
 
+    <section id="gameOverScreen" class="screen">
+      <h1>Infection Spread</h1>
+      <p>The viruses overwhelmed the body.</p>
+      <div class="stats-grid">
+        <div class="stat-card"><strong id="finalScore">0</strong><span>Score</span></div>
+        <div class="stat-card"><strong id="finalCoins">0</strong><span>Coins</span></div>
+      </div>
+      <button id="restartBtn" class="primary-btn">Restart</button>
+    </section>
+
+    <section id="upgradeScreen" class="screen">
+      <h1>Upgrades</h1>
+      <div id="upgradeList" class="upgrade-list"></div>
+      <button id="closeUpgradeBtn" class="secondary-btn">Close</button>
+    </section>
+  </div>
+
+  <div id="banner" class="banner"></div>
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="game.js"></script>
 </body>
 </html>
